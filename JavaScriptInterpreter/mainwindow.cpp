@@ -33,6 +33,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->txtEdtCode->setCompleter(completer);
     ui->txtEdtCode->setTabStopWidth(24);
+
+    QFont font("Times", 11);
+    ui->txtEdtCode->setFont(font);
 }
 
 MainWindow::~MainWindow()
