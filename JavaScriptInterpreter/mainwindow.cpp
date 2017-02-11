@@ -9,13 +9,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QStringList list;
     list << "function" << "var" << "console" << "log" << "prompt" << "return"
-         << "parseInt" << "parseFloat" << "Math" << "pow" << "alert";
+         << "parseInt" << "parseFloat" << "Math" << "pow" << "alert" << "for"
+         << "if" << "if else" << "else" << "while";
 
     completer   = new QCompleter(list, ui->txtEdtCode);
     highlighter = new Highlighter(ui->txtEdtCode->document());
     console     = new JSConsole(this);
     dialog      = new Dialog(this);
-    alert       = new Alert(this);
+    alert       = new Alert(this);    
 
     connect(console, SIGNAL(newLog(QString)), this, SLOT(newMsg(QString)));
     connect(ui->txtEdtCode, SIGNAL(f5Pressed()), this, SLOT(on_pshBtnExecute_clicked()));
@@ -30,12 +31,14 @@ MainWindow::MainWindow(QWidget *parent) :
 
     functions  = "function prompt(text, label) { return dialog.show(text, label); }";
     functions += "function alert(text) { alerts.show(text); }";
+    functions += "function print(text) { console.log(text); }";
+
 
     ui->txtEdtCode->setCompleter(completer);
     ui->txtEdtCode->setTabStopWidth(24);
 
     QFont font("Times", 11);
-    ui->txtEdtCode->setFont(font);
+    ui->txtEdtCode->setFont(font);        
 }
 
 MainWindow::~MainWindow()
@@ -136,4 +139,11 @@ void MainWindow::on_actionSave_file_triggered()
         }
         file.close();
     }
+}
+
+void MainWindow::showMaximized()
+{
+    QMainWindow::showMaximized();
+    double height = ui->txtEdtCode->height();
+    ui->txtEdtResult->setMaximumHeight(height / 1.5);
 }

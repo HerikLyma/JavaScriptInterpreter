@@ -24,6 +24,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
 
     ~MainWindow();
+public slots:
+    void showMaximized();
 private slots:
     void on_pshBtnExecute_clicked();
 

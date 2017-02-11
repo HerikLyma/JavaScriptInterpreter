@@ -67,7 +67,10 @@ Highlighter::Highlighter(QTextDocument *parent)
                     << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b"
                     << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b"
                     << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b"
-                    << "\\bvoid\\b" << "\\bvolatile\\b" << "\\bvar\\b" << "\\bfunction\\b" << "\\breturn\\b";
+                    << "\\bvoid\\b" << "\\bvolatile\\b" << "\\bvar\\b"
+                    << "\\bfunction\\b" << "\\breturn\\b" << "\\bfor\\b"
+                    << "\\bwhile\\b" << "\\bdo\\b" << "\\bif\\b"
+                    << "\\belse\\b" << "\\belse if\\b";
     foreach (const QString &pattern, keywordPatterns)
     {
         rule.pattern = QRegExp(pattern);
